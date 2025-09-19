@@ -1,0 +1,14 @@
+on: [push]
+
+jobs:
+  cache-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/cache@v4
+        with:
+          path: .tmp-cache
+          key: demo-${{ github.sha }}
+      - run: |
+          mkdir -p .tmp-cache
+          date > .tmp-cache/timestamp.txt
+          cat .tmp-cache/timestamp.txt
